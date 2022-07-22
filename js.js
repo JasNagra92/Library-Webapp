@@ -11,9 +11,10 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
-let hobbit = new Book("The Hobbit", "J.R. Tolkien", 300, "read");
-addBookToLibrary(hobbit);
-
+// const createBook = function(title,author,pages,read){
+// let title = new Book(title, author, pages,read);
+// addBookToLibrary(title);
+// }
 function displayBooks(array) {
   array.forEach((book) => {
     let table = document.getElementById("booktable");
@@ -32,3 +33,8 @@ function displayBooks(array) {
     }
   });
 }
+const openBtn = document.getElementById("addBook");
+openBtn.addEventListener('click',(e)=>{
+  console.log(e)
+document.getElementById('myForm').style.display = 'block'
+})
