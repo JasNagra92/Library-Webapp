@@ -11,10 +11,11 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
-// const createBook = function(title,author,pages,read){
-// let title = new Book(title, author, pages,read);
-// addBookToLibrary(title);
-// }
+function createBook(title,author,pages,read){
+let book1 = new Book(title, author, pages,read);
+console.log(book1)
+addBookToLibrary(book1);
+}
 function displayBooks(array) {
   array.forEach((book) => {
     let table = document.getElementById("booktable");
@@ -33,8 +34,17 @@ function displayBooks(array) {
     }
   });
 }
-const openBtn = document.getElementById("addBook");
-openBtn.addEventListener('click',(e)=>{
-  console.log(e)
+const openBtn = document.getElementById("openForm");
+openBtn.addEventListener('click',()=>{
 document.getElementById('myForm').style.display = 'block'
+})
+const addBookBtn = document.getElementById('addBook');
+addBookBtn.addEventListener('click', function(){
+  title = document.getElementById('title').value
+  author = document.getElementById('author').value
+  pages = document.getElementById('pages').value
+  createBook(title,author,pages)
+  document.forms['bookform'].reset()
+  document.getElementById('myForm').style.display = "none"
+  displayBooks(myLibrary)
 })

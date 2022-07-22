@@ -48,17 +48,28 @@ main {
 .form-popup{
   display: none;
   position: fixed;
-  bottom: 0;
-  right: 15px;
-  border:3px solid #f1f1f1;
+  top: 0;
+  width: 50%;
+  transform: translateX(-50%);
+  left:50%;
   z-index: 9;
 }
 .form-container{
   max-width: 600px;
+  width: 50vw;
   padding: 10px;
   background-color: white;
+  text-align: center;
+  border: 3px solid black;
 }
 input:focus{
   outline: none;
   background-color: #ddd;
+}
+ul{
+  list-style: none;
+  padding-left: 0;
+}
+button{
+  margin-top:10px
 }
