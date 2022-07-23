@@ -6,7 +6,7 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages + " pages";
   this.read = read;
-  this.inTable = false
+  this.inTable = false;
 }
 
 function createBook(title, author, pages, read) {
@@ -20,31 +20,31 @@ function addBookToLibrary(book) {
 
 function displayBooks(array) {
   array.forEach((book) => {
-    if (book.inTable == false){
-    let row = table.insertRow(1);
-    let title = row.insertCell(0);
-    let author = row.insertCell(1);
-    let pages = row.insertCell(2);
-    let read = row.insertCell(3);
-    let remove = row.insertCell(4);
-    let removeBtn = document.createElement("button");
-    removeBtn.dataset.id = book.title;
-    removeBtn.dataset.delete = "delete";
-    removeBtn.innerHTML = "remove book";
-    remove.appendChild(removeBtn);
+    if (book.inTable == false) {
+      let row = table.insertRow(1);
+      let title = row.insertCell(0);
+      let author = row.insertCell(1);
+      let pages = row.insertCell(2);
+      let read = row.insertCell(3);
+      let remove = row.insertCell(4);
+      let removeBtn = document.createElement("button");
+      removeBtn.dataset.id = book.title;
+      removeBtn.dataset.delete = "delete";
+      removeBtn.innerHTML = "remove book";
+      remove.appendChild(removeBtn);
 
-    let toggle = row.insertCell(5);
-    let toggleBtn = document.createElement("button");
-    toggleBtn.dataset.toggle = "toggle";
-    toggleBtn.dataset.id = book.title;
-    toggleBtn.innerHTML = "read";
-    toggle.appendChild(toggleBtn);
+      let toggle = row.insertCell(5);
+      let toggleBtn = document.createElement("button");
+      toggleBtn.dataset.toggle = "toggle";
+      toggleBtn.dataset.id = book.title;
+      toggleBtn.innerHTML = "read";
+      toggle.appendChild(toggleBtn);
 
-    title.innerHTML = book.title;
-    author.innerHTML = book.author;
-    pages.innerHTML = book.pages;
-    read.innerHTML = book.read;
-    book.inTable = true
+      title.innerHTML = book.title;
+      author.innerHTML = book.author;
+      pages.innerHTML = book.pages;
+      read.innerHTML = book.read;
+      book.inTable = true;
     }
   });
 }
@@ -62,7 +62,7 @@ table.addEventListener("click", function (e) {
   } else if (e.target.dataset.toggle == "toggle") {
     let book = myLibrary.find((book) => book.title == e.target.dataset.id);
     deleteRow(e.target);
-    book.inTable = false
+    book.inTable = false;
     toggleRead(book);
   }
 });
@@ -83,9 +83,10 @@ addBookBtn.addEventListener("click", function () {
   displayBooks(myLibrary);
 });
 function toggleRead(book) {
-  if (book.read == "read"){
-  book.read = "not-read";
-  } else {book.read = "read"}
-  displayBooks(myLibrary)
+  if (book.read == "read") {
+    book.read = "not-read";
+  } else {
+    book.read = "read";
   }
-
+  displayBooks(myLibrary);
+}
