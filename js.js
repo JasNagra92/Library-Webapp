@@ -6,6 +6,7 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages + " pages";
   this.read = read;
+  this.inTable = false
 }
 
 function createBook(title, author, pages, read) {
@@ -19,6 +20,7 @@ function addBookToLibrary(book) {
 
 function displayBooks(array) {
   array.forEach((book) => {
+    if (book.inTable == false){
     let row = table.insertRow(1);
     let title = row.insertCell(0);
     let author = row.insertCell(1);
@@ -42,6 +44,8 @@ function displayBooks(array) {
     author.innerHTML = book.author;
     pages.innerHTML = book.pages;
     read.innerHTML = book.read;
+    book.inTable = true
+    }
   });
 }
 function deleteRow(button) {
@@ -57,8 +61,9 @@ table.addEventListener("click", function (e) {
     deleteRow(e.target);
   } else if (e.target.dataset.toggle == "toggle") {
     let book = myLibrary.find((book) => book.title == e.target.dataset.id);
-    toggleRead(book);
     deleteRow(e.target);
+    book.inTable = false
+    toggleRead(book);
   }
 });
 
@@ -78,6 +83,9 @@ addBookBtn.addEventListener("click", function () {
   displayBooks(myLibrary);
 });
 function toggleRead(book) {
+  if (book.read == "read"){
   book.read = "not-read";
-  displayBooks(myLibrary);
-}
+  } else {book.read = "read"}
+  displayBooks(myLibrary)
+  }
+
