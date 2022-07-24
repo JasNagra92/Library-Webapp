@@ -1,12 +1,14 @@
 let myLibrary = [];
 let table = document.getElementById("booktable");
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages + " pages";
-  this.read = read;
-  this.inTable = false;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages + " pages";
+    this.read = read;
+    this.inTable = false;
+  }
 }
 
 function createBook(title, author, pages, read) {
